@@ -1,13 +1,11 @@
 ## Getting Started
 
 1) Install postgresql 
-Open up the Terminal and install postgresql with brew.
+link : https://www.postgresql.org/download/windows/ .
+Install last version .
 
-link : https://www.postgresql.org/download/windows/
- istall last version.
-
- Start intaller. Check all supplements apps. 
-  On finish it will ask to sigh up. remmeber the password.
+ #Start intaller. Check all supplements apps . 
+  #On finish it will ask to sign up. remmeber the password .
 
 2)
 type 'SQl shell' or 'psql' in search tool.
@@ -15,10 +13,10 @@ Open SQL Shell .
 
 
 In sql shell: 
-Server [localhost]:
-Database [postgres]:
-Port [5432]:
-Username [postgres]: 0000 //you password that you set up when install
+##Server [localhost]:
+##Database [postgres]:
+##Port [5432]:
+##Username [postgres]: 0000 //you password that you set up when install
 
 3)Create a user
 
@@ -29,11 +27,11 @@ postgres=# \q
 
 4) you quit. open SQL shell again
 type: 
-Server [localhost]:
-Database [postgres]:
-Port [5432]:
-Username [postgres]: me
-Password for user me: password
+##Server [localhost]:
+##Database [postgres]:
+##Port [5432]:
+##Username [postgres]: me
+##Password for user me: password
 
 postgres=> CREATE DATABASE api;
 
