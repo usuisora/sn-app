@@ -65,7 +65,8 @@ IN BROWSER
 **you can look for them in "database/init_Database"**
 
 
+### RESET DB
+#### 1.Copy code from 'database/drop.sql' and enter in SQL shell .
+#### 2.restart server
 
-to drop db the code from drop.sql and enter in power shell 
-then go to where the server running and restart.
 
