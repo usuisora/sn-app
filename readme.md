@@ -75,3 +75,8 @@ if you creadentials are good and you are getting error go go back step 3;
 - /server/pool.js - config to connect database;
 - /server/index.js -set up of server;
 - /database/init_Database.sql - creates and fullfils tables in db you connected to.
+
+## For test purpose of app the followings was omitted:
+- hashing passwords
+- lazy load
+- .env config
