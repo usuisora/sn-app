@@ -7,7 +7,6 @@ export default function Outgoing({ user }) {
 
 	function handleClick() {
 		deleteData(`http://localhost:5000/cancel-request/${user.id}`).then((res) => {
-			console.log(res);
 			history.go(0);
 		});
 	}

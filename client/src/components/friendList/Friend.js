@@ -7,7 +7,6 @@ export default function Friend({ user }) {
 
 	const handleClick = () => {
 		updateData(`http://localhost:5000/del-from-friends/${user.id}`, {}).then((res) => {
-			console.log(res, 'hio');
 			history.go(0);
 		});
 	};

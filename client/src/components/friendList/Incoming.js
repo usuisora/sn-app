@@ -7,14 +7,12 @@ export default function Incoming({ user }) {
 
 	function handleAccept() {
 		updateData(`http://localhost:5000/submit-friend/${user.id}`).then((res) => {
-			console.log(res);
 			history.go(0);
 		});
 	}
 
 	function handleIgnore() {
 		deleteData(`http://localhost:5000/cancel-request/${user.id}`, {}).then((res) => {
-			console.log(res);
 			history.go(0);
 		});
 	}

@@ -11,9 +11,7 @@ async function postData(url, body) {
 export default function AnotherUser({ user }) {
 	const history = useHistory();
 	function handleClick() {
-		console.log(user);
 		postData(`http://localhost:5000/request-friendship-to/${user.id}`).then((res) => {
-			console.log(res);
 			history.go(0);
 		});
 	}

@@ -34,7 +34,6 @@ export default function UserList() {
 		[ data ]
 	);
 	function searchHandler(e) {
-		console.log(Object.values(data).flat());
 		const flatFiltered = Object.values(data)
 			.flat()
 			.filter((user) => !user.username.toLowerCase().indexOf(e.target.value.toLowerCase()));

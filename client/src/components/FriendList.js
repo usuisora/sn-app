@@ -5,13 +5,7 @@ import Incoming from './friendList/Incoming';
 import useFetch from '../modules/useFetch';
 
 export default function FriendList() {
-	// const data = {
-	// 	friends: [ 'clare' ],
-	// 	outgoing: [ 'mika', 'rio' ],
-	// 	incoming: [ 'sara', 'flaffy' ]
-	// };
 	const { data, loading } = useFetch('http://localhost:5000/friends');
-	console.log(data);
 
 	return (
 		<React.Fragment>

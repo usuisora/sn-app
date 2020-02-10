@@ -3,7 +3,6 @@ const fs = require('fs');
 
 const getUsers = (request, response) => {
 	const id = parseInt(request.cookies.id);
-	console.log('cookie', request.cookies);
 	let authorized = Boolean(id);
 	if (!authorized) response.status(500).json({ authorized });
 	else
@@ -27,27 +26,23 @@ const getUsers = (request, response) => {
 					id , username, Null as state from users where id <> $1 order by state`,
 						[ id ],
 						(error, usersResults) => {
-							console.log(`friendResults.rows`, friendsResults.rows);
-							console.log(usersResults.rows);
 							let userNames = usersResults.rows.map((user) => user.username);
-							console.log(`userNames`, userNames);
+
 							let friends = friendsResults.rows.map((row) => ({
 								id: id === parseInt(row.user_1) ? parseInt(row.user_2) : parseInt(row.user_1),
 								username: id === parseInt(row.user_1) ? row.username_2 : row.username,
 								state: row.state
 							}));
 							let friendNames = friends.map((friend) => friend.username);
-							console.log(`friendNames`, friendNames);
+
 							let anotherNames = userNames.filter((name) => {
-								console.log('includes?', !friendNames.includes(name));
 								return !friendNames.includes(name);
 							});
-							console.log(`anotherNames`, anotherNames);
+
 							let another = usersResults.rows.filter((user) => {
 								let name = user.username;
 								return anotherNames.includes(name);
 							});
-							console.log('another  ', another);
 
 							let filteredResults = {
 								incoming: [],
@@ -116,7 +111,6 @@ const createRequest = (request, response) => {
 	}
 
 	const user_2 = parseInt(request.params.id);
-	console.log('user_2', user_2);
 	const state = user_1 > user_2 ? 'outgoing' : 'incoming';
 	let params = [ user_1, user_2 ].sort();
 
@@ -132,7 +126,6 @@ const submitRequest = (request, response) => {
 	const user_1 = parseInt(request.cookies.id);
 	const user_2 = parseInt(request.params.id);
 	const authorized = Boolean(user_1);
-	console.log('user', user_1);
 
 	if (!authorized) {
 		response.status(500).json({ authorized });
@@ -162,7 +155,6 @@ const cancelRequest = (request, response) => {
 	}
 	let params = [ user_1, user_2 ].sort();
 	pool.query('DELETE FROM friends WHERE  user_1 = $1 and user_2 = $2;', [ ...params ], (error, results) => {
-		console.log('deleted ', user_1, user_2);
 		if (error) {
 			response.status(406).json({ error, authorized });
 		}
@@ -204,14 +196,12 @@ const login = (request, response) => {
 	let { login, password } = request.cookies;
 	if (!password || !login) {
 		login = request.body.login;
-		console.log(`password`, password);
 	}
 	pool.query('SELECT * FROM users  WHERE login = $1 and password = $2', [ login, password ], (error, results) => {
 		if (error || results.rows.length === 0) {
 			response.status(405).json({ error, isAuthenticated: false });
 		} else {
 			[ user ] = results.rows;
-			console.log(user);
 			response
 				.cookie('id', results.rows[0].id)
 				.cookie('username', results.rows[0].username)
@@ -224,7 +214,6 @@ const login = (request, response) => {
 };
 
 const signout = (request, response) => {
-	console.log(request.cookies.id);
 	[ ('id', 'username', 'password', 'login') ].forEach((cookie) => response.clearCookie(cookie));
 	response.status(200).send({ success: true });
 };
