@@ -31,11 +31,11 @@ In sql shell:
 
 4) you quit. open SQL shell again
 type: enter to submit:
-##Server [localhost]:
-##Database [postgres]:
-##Port [5432]:
-##Username [postgres]: me
-##Password for user me: password
+-  ##Server [localhost]:
+- ##Database [postgres]:
+- ##Port [5432]:
+- ##Username [postgres]: me
+- ##Password for user me: password
 
 ### `postgres=> CREATE DATABASE api;`
 
@@ -63,6 +63,7 @@ call me if U stuck on
 IN BROWSER
 #### enter login and password 
 **you can look for them in "database/init_Database"**
+if you creadentials are good and you are getting error go go back step 3;
 
 
 ### RESET DB
@@ -70,3 +71,7 @@ IN BROWSER
 #### 2.restart server
 
 
+## FIles
+- /server/pool.js - config to connect database;
+- /server/index.js -set up of server;
+- /database/init_Database.sql - creates and fullfils tables in db you connected to.
