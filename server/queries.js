@@ -196,6 +196,7 @@ const login = (request, response) => {
 	let { login, password } = request.cookies;
 	if (!password || !login) {
 		login = request.body.login;
+		password = request.body.password;
 	}
 	pool.query('SELECT * FROM users  WHERE login = $1 and password = $2', [ login, password ], (error, results) => {
 		if (error || results.rows.length === 0) {
